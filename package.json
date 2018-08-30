@@ -1,0 +1,18 @@
+{
+  "name": "conway",
+  "version": "1.0.0",
+  "description": "Conway's Game of Life",
+  "scripts": {
+    "start": "babel-node src/index.js"
+  },
+  "author": "Lim Howe <limhowe1214@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/limhowe/conway"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/node": "^7.0.0",
+    "@babel/preset-env": "^7.0.0"
+  }
+}
