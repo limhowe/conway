@@ -11,10 +11,12 @@ export default class GridGameComponent {
   }
 
   draw() {
-    const { alive, dead } = this._drawOptions;
+    const { alive, dead, newLine } = this._drawOptions;
     const { cells } = this._game;
-    return cells
-      .map(row => row.map(cell => (cell ? alive : dead)).join(''))
-      .join(newLine);
+    process.stdout.write(
+      cells
+        .map(row => row.map(cell => (cell ? alive : dead)).join(''))
+        .join(newLine)
+    );
   }
 }

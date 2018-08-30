@@ -23,7 +23,7 @@ export default class GridLayout {
         const listItem = list[this.getListIndex(row, col)];
         rowItems.push(listItem);
       }
-      items.push(listItem);
+      items.push(rowItems);
     }
     return items;
   }
