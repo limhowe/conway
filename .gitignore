@@ -1,0 +1,7 @@
+.idea
+Thumbs.db
+.DS_Store
+node_modules
+coverage
+out/*
+!out/index.html
