@@ -67,13 +67,12 @@ export default class Game {
     const length = this._cells.length;
     const aliveCount = Math.min(initialCount, length);
 
+    let indexList = Array.from({ length }, (v, k) => k);
+
     for (let i = 0; i < aliveCount; i++) {
-      const index = Math.floor(length * Math.random());
-      if (this._cells[index]) {
-        i--;
-      } else {
-        this._cells[index] = true;
-      }
+      const rand = Math.floor(length * Math.random());
+      const index = indexList.splice(rand, 1)[0];
+      this._cells[index] = true;
     }
 
     this._gameState = GameState.LOAD;
