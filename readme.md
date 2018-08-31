@@ -9,3 +9,8 @@ yarn
 ```shell
 yarn start
 ```
+
+#### Test
+```shell
+yarn test
+```
