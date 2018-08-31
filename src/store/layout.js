@@ -33,8 +33,8 @@ export default class GridLayout {
    * @param {number} index
    */
   getGridIndex(index) {
-    const row = Math.floor(index / this._numRows);
-    const col = Math.floor(index % this._numRows);
+    const row = Math.floor(index / this._numCols);
+    const col = index % this._numCols;
 
     return { row, col };
   }
@@ -48,7 +48,7 @@ export default class GridLayout {
     if (row < 0 || row >= this._numRows || col < 0 || col >= this._numCols) {
       return -1;
     }
-    return row * this._numRows + col;
+    return row * this._numCols + col;
   }
 
   /**
