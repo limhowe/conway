@@ -1,7 +1,14 @@
-import Game from './store/game';
+import Game, { GameState } from './store/game';
 import GridGameComponent from './components/grid';
 
-const game = Game.createGame(40, 40, 80);
+const game = Game.createGame(20, 10);
 const gridGameComponent = new GridGameComponent(game);
 
-gridGameComponent.draw();
+const autorun = setInterval(() => {
+  gridGameComponent.draw();
+  if (game.gameState === GameState.DONE) {
+    clearInterval(autorun);
+  } else {
+    game.goToNextStep();
+  }
+}, 100);

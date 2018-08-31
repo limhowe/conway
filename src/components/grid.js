@@ -13,6 +13,8 @@ export default class GridGameComponent {
   draw() {
     const { alive, dead, newLine } = this._drawOptions;
     const { cells } = this._game;
+    process.stdout.write('\x1B[2J\x1B[0f\u001b[0;0H');
+
     process.stdout.write(
       cells
         .map(row => row.map(cell => (cell ? alive : dead)).join(''))

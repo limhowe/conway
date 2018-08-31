@@ -37,7 +37,7 @@ export default class Game {
    * return current game state
    */
   get gameState() {
-    return this._layout.layoutItems(this._cells);
+    return this._gameState;
   }
 
   /**
@@ -70,23 +70,27 @@ export default class Game {
    * go to next game step
    */
   goToNextStep() {
-    const diffCount = 0;
-    this._cells = this._cells.forEach((cell, index) => {
+    let diffCount = 0;
+    this._cells.forEach((cell, index) => {
       let neighbours = this._layout.getNeighbours(index);
 
-      let aliveNeighbours = neighbours.filter(listIndex => this._cells[item]);
+      let aliveNeighbours = neighbours.filter(listIndex => this._cells[listIndex]);
 
       if (cell) {
+        // RULE NO. 1 AND NO. 3
         if (aliveNeighbours.length < 2 || aliveNeighbours.length > 3) {
           diffCount++;
           this._cells[index] = false;
         }
       } else {
+        // RULE NO. 4
         if (aliveNeighbours.length === 3) {
           diffCount++;
           this._cells[index] = true;
         }
       }
+
+      // REST GOES TO RULE NO. 2
     });
 
     if (diffCount > 0) {
