@@ -1,5 +1,5 @@
-import GridLayout from '../layout';
 import test from 'ava';
+import GridLayout from '../layout';
 
 test('should return correct length', t => {
   t.plan(1);
@@ -9,30 +9,35 @@ test('should return correct length', t => {
   t.is(layout.totalLength, numRow * numCol);
 });
 
+test('should return correct grid index', t => {
+  t.plan(2);
+  const numRow = 3,
+    numCol = 3;
+  const layout = new GridLayout(numRow, numCol);
+  const { row, col } = layout.getGridIndex(numRow + 1);
+
+  t.is(row, 1);
+  t.is(col, 1);
+});
+
 test('should return correct neighbours', t => {
   t.plan(5);
   const numRow = 3,
     numCol = 3;
   const layout = new GridLayout(numRow, numCol);
 
-  let index = layout.getListIndex(1,1);
-  t.is(layout.getNeighbours(index).length, 8);
+  t.is(layout.getNeighbours(layout.getListIndex(1, 1)).length, 8);
 
-  index = layout.getListIndex(0,1);
-  t.is(layout.getNeighbours(index).length, 5);
+  t.is(layout.getNeighbours(layout.getListIndex(0, 1)).length, 5);
 
-  index = layout.getListIndex(0,0);
-  t.is(layout.getNeighbours(index).length, 3);
+  t.is(layout.getNeighbours(layout.getListIndex(0, 0)).length, 3);
 
-  index = layout.getListIndex(1,0);
-  t.is(layout.getNeighbours(index).length, 5);
+  t.is(layout.getNeighbours(layout.getListIndex(1, 0)).length, 5);
 
-  index = layout.getListIndex(2,2);
-  t.is(layout.getNeighbours(index).length, 3);
+  t.is(layout.getNeighbours(layout.getListIndex(2, 2)).length, 3);
 });
 
 test('should layout grid correctly', t => {
-  t.plan(2);
   const numRow = 3,
     numCol = 3;
   const layout = new GridLayout(numRow, numCol),
@@ -43,4 +48,3 @@ test('should layout grid correctly', t => {
   t.is(cells.length, numRow);
   t.is(cells[0].length, numCol);
 });
-
